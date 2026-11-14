@@ -1,0 +1,863 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOVEXA | Help Center</title>
+
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+:root {
+    --mx-teal: #0B3048;
+    --mx-pearl: #F2F0E9;
+    --mx-lime: #B9F12F;
+    --mx-blue: #527080;
+    --mx-white: #FFFFFF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    margin: 0;
+    background: var(--mx-pearl);
+    color: var(--mx-teal);
+    font-family: Arial, sans-serif;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.mx-header {
+    width: 100%;
+    min-height: 94px;
+    background: var(--mx-teal);
+    position: sticky;
+    top: 0;
+    z-index: 99999;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.mx-nav-container {
+    width: min(1500px, 94%);
+    min-height: 94px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.mx-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.mx-brand img {
+    width: 65px;
+    height: 58px;
+    object-fit: contain;
+    display: block;
+}
+
+.mx-brand-name {
+    color: var(--mx-white);
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.mx-brand-name span {
+    color: var(--mx-lime);
+}
+
+.mx-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 27px;
+}
+
+.mx-menu a {
+    color: #FFFFFF !important;
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 10px 0;
+    transition: 0.25s;
+}
+
+.mx-menu a:hover,
+.mx-menu a.mx-active {
+    color: var(--mx-lime) !important;
+}
+
+.mx-menu a.mx-active {
+    border-bottom: 3px solid var(--mx-lime);
+}
+
+.mx-menu .mx-login {
+    border: 1.5px solid #FFFFFF;
+    padding: 11px 22px;
+    border-radius: 30px;
+}
+
+.mx-menu .mx-book {
+    background: var(--mx-lime);
+    color: var(--mx-teal) !important;
+    padding: 14px 23px;
+    border-radius: 30px;
+    font-weight: 800;
+}
+
+.mx-menu .mx-book:hover {
+    background: #A6DC20;
+    color: var(--mx-teal) !important;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.mx-hero {
+    background: var(--mx-teal);
+    padding: 75px 6%;
+    position: relative;
+    overflow: hidden;
+}
+
+.mx-hero::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(185,241,47,0.10);
+    right: 7%;
+    top: -130px;
+}
+
+.mx-hero-content {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.mx-label {
+    color: var(--mx-lime);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.mx-hero h1 {
+    color: #FFFFFF;
+    font-size: clamp(38px, 5vw, 58px);
+    margin: 20px 0;
+    line-height: 1.12;
+}
+
+.mx-hero h1 span {
+    color: var(--mx-lime);
+}
+
+.mx-hero p {
+    color: #DCE7EA;
+    max-width: 700px;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   MAIN SUPPORT AREA
+========================= */
+
+.mx-support-section {
+    background: var(--mx-pearl);
+    padding: 75px 5%;
+}
+
+.mx-support-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.4fr;
+    gap: 35px;
+    align-items: start;
+}
+
+
+/* SUPPORT CARDS */
+
+.mx-support-options {
+    display: grid;
+    gap: 18px;
+}
+
+.mx-support-card {
+    background: #FFFFFF;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #E0E5E3;
+    box-shadow: 0 8px 25px rgba(11,48,72,0.06);
+    transition: 0.3s;
+}
+
+.mx-support-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--mx-lime);
+    box-shadow: 0 12px 28px rgba(11,48,72,0.12);
+}
+
+.mx-support-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--mx-lime);
+    color: var(--mx-teal);
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    font-size: 24px;
+    margin-bottom: 17px;
+}
+
+.mx-support-card h3 {
+    color: var(--mx-teal);
+    font-size: 19px;
+    margin: 0 0 10px;
+}
+
+.mx-support-card p {
+    color: var(--mx-blue);
+    line-height: 1.7;
+    font-size: 14px;
+    margin: 0;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.mx-form-box {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 38px;
+    border: 1px solid #E0E5E3;
+    box-shadow: 0 10px 35px rgba(11,48,72,0.07);
+}
+
+.mx-form-box h2 {
+    color: var(--mx-teal);
+    font-size: 30px;
+    margin: 0 0 10px;
+}
+
+.mx-form-description {
+    color: var(--mx-blue);
+    line-height: 1.7;
+    margin-bottom: 28px;
+}
+
+.mx-form-box label {
+    display: block;
+    color: var(--mx-teal);
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.mx-form-box input,
+.mx-form-box select,
+.mx-form-box textarea {
+    width: 100%;
+    padding: 14px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #D9E0E1;
+    border-radius: 9px;
+    background: #F8F9F5;
+    color: var(--mx-teal);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.mx-form-box input:focus,
+.mx-form-box select:focus,
+.mx-form-box textarea:focus {
+    border-color: var(--mx-teal);
+    box-shadow: 0 0 0 3px rgba(11,48,72,0.08);
+}
+
+.mx-form-box textarea {
+    min-height: 145px;
+    resize: vertical;
+}
+
+.mx-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--mx-lime);
+    color: var(--mx-teal);
+    font-size: 16px;
+    font-weight: 800;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mx-submit:hover {
+    background: #A6DC20;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   FAQ
+========================= */
+
+.mx-faq-section {
+    padding: 75px 5%;
+    background: #FFFFFF;
+}
+
+.mx-faq-container {
+    max-width: 950px;
+    margin: auto;
+}
+
+.mx-faq-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.mx-faq-heading .mx-label {
+    color: #769D16;
+}
+
+.mx-faq-heading h2 {
+    color: var(--mx-teal);
+    font-size: 34px;
+    margin: 14px 0;
+}
+
+.mx-faq-heading p {
+    color: var(--mx-blue);
+}
+
+.mx-faq {
+    padding: 23px;
+    background: var(--mx-pearl);
+    border-radius: 13px;
+    border: 1px solid #E1E5E0;
+    margin-bottom: 15px;
+}
+
+.mx-faq h3 {
+    color: var(--mx-teal);
+    font-size: 17px;
+    margin: 0 0 10px;
+}
+
+.mx-faq p {
+    color: var(--mx-blue);
+    line-height: 1.7;
+    margin: 0;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.mx-cta-section {
+    background: var(--mx-pearl);
+    padding: 55px 5%;
+}
+
+.mx-cta {
+    max-width: 1200px;
+    margin: auto;
+    padding: 48px 25px;
+    text-align: center;
+    border-radius: 20px;
+    background: var(--mx-teal);
+}
+
+.mx-cta h2 {
+    color: #FFFFFF;
+    font-size: 30px;
+    margin: 0 0 14px;
+}
+
+.mx-cta p {
+    color: #DCE7EA;
+    margin-bottom: 25px;
+}
+
+.mx-cta a {
+    display: inline-block;
+    background: var(--mx-lime);
+    color: var(--mx-teal);
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 9px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.mx-footer {
+    background: var(--mx-teal);
+    padding: 50px 5% 20px;
+    color: #FFFFFF;
+}
+
+.mx-footer-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 35px;
+}
+
+.mx-footer h3 {
+    color: var(--mx-lime);
+    margin-bottom: 17px;
+}
+
+.mx-footer p {
+    color: #C8D7DC;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.mx-footer a {
+    display: block;
+    color: #FFFFFF !important;
+    text-decoration: none;
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.mx-footer a:hover {
+    color: var(--mx-lime) !important;
+}
+
+.mx-footer-brand {
+    font-size: 27px;
+    font-weight: 900;
+    color: #FFFFFF;
+}
+
+.mx-footer-brand span {
+    color: var(--mx-lime);
+}
+
+.mx-footer-bottom {
+    max-width: 1200px;
+    margin: 35px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.18);
+    color: #C8D7DC;
+    font-size: 13px;
+    text-align: center;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 1000px) {
+    .mx-nav-container {
+        flex-direction: column;
+        padding: 17px 0;
+        gap: 14px;
+    }
+
+    .mx-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .mx-support-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 600px) {
+    .mx-header,
+    .mx-nav-container {
+        min-height: auto;
+    }
+
+    .mx-menu {
+        gap: 9px 15px;
+    }
+
+    .mx-menu a {
+        font-size: 13px;
+    }
+
+    .mx-brand-name {
+        font-size: 25px;
+    }
+
+    .mx-hero {
+        padding: 55px 6%;
+    }
+
+    .mx-hero h1 {
+        font-size: 37px;
+    }
+
+    .mx-support-section,
+    .mx-faq-section {
+        padding: 45px 5%;
+    }
+
+    .mx-form-box {
+        padding: 24px 18px;
+    }
+
+    .mx-footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mx-cta h2 {
+        font-size: 24px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     COMPLETE NAVBAR
+========================= -->
+
+<header class="mx-header">
+    <div class="mx-nav-container">
+
+        <a href="index.html" class="mx-brand">
+            <img src="../images/logo.png" alt="MOVEXA Logo">
+            <div class="mx-brand-name">
+                MOVE<span>XA</span>
+            </div>
+        </a>
+
+        <nav class="mx-menu">
+            <a href="index.html">Home</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#steps">How It Works</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="help.html" class="mx-active">Help</a>
+            <a href="login.html" class="mx-login">Login</a>
+            <a href="booking.html" class="mx-book">Book a Move</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="mx-hero">
+    <div class="mx-hero-content">
+
+        <div class="mx-label">CUSTOMER CARE</div>
+
+        <h1>
+            How can we <span>help?</span>
+        </h1>
+
+        <p>
+            Facing a problem with your booking or moving service?
+            Tell us what happened and the MOVEXA support team
+            will review it.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     SUPPORT CONTENT
+========================= -->
+
+<section class="mx-support-section">
+    <div class="mx-support-container">
+
+        <div class="mx-support-options">
+
+            <div class="mx-support-card">
+                <div class="mx-support-icon">📦</div>
+                <h3>Booking Problems</h3>
+                <p>
+                    Having trouble creating, viewing or managing
+                    your booking? Send us the details.
+                </p>
+            </div>
+
+            <div class="mx-support-card">
+                <div class="mx-support-icon">🚚</div>
+                <h3>Service Issues</h3>
+                <p>
+                    Report problems related to pickup,
+                    delivery or moving services.
+                </p>
+            </div>
+
+            <div class="mx-support-card">
+                <div class="mx-support-icon">💳</div>
+                <h3>Payment Issues</h3>
+                <p>
+                    Need help with a payment or transaction?
+                    Contact our support team.
+                </p>
+            </div>
+
+            <div class="mx-support-card">
+                <div class="mx-support-icon">🎧</div>
+                <h3>Customer Support</h3>
+                <p>
+                    Our team is here to help you with
+                    your questions and concerns.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- SUPPORT FORM -->
+
+        <div class="mx-form-box">
+
+            <h2>Report a Problem</h2>
+
+            <p class="mx-form-description">
+                Submit your issue below. Please provide
+                as much information as possible.
+            </p>
+
+            <form id="supportForm">
+
+                <label for="supportName">Your Name</label>
+                <input
+                    type="text"
+                    id="supportName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <label for="supportEmail">Email Address</label>
+                <input
+                    type="email"
+                    id="supportEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="supportIssue">Issue Type</label>
+                <select id="supportIssue" required>
+                    <option value="">Select Issue</option>
+                    <option>Booking Issue</option>
+                    <option>Service Issue</option>
+                    <option>Payment Issue</option>
+                    <option>Account / Profile</option>
+                    <option>Other</option>
+                </select>
+
+                <label for="supportMessage">Describe Your Problem</label>
+                <textarea
+                    id="supportMessage"
+                    placeholder="Explain your problem in detail..."
+                    required
+                ></textarea>
+
+                <button type="submit" class="mx-submit">
+                    Submit Support Request →
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     FAQ
+========================= -->
+
+<section class="mx-faq-section">
+    <div class="mx-faq-container">
+
+        <div class="mx-faq-heading">
+            <div class="mx-label">QUICK ANSWERS</div>
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to common MOVEXA questions.</p>
+        </div>
+
+        <div class="mx-faq">
+            <h3>How can I create a booking?</h3>
+            <p>
+                Login to your account and select Book a Move
+                from the navigation menu.
+            </p>
+        </div>
+
+        <div class="mx-faq">
+            <h3>Can I track my booking?</h3>
+            <p>
+                Visit My Bookings from your account to
+                check the latest booking status.
+            </p>
+        </div>
+
+        <div class="mx-faq">
+            <h3>Can I update my profile?</h3>
+            <p>
+                Open My Profile from your dashboard
+                to manage your account information.
+            </p>
+        </div>
+
+        <div class="mx-faq">
+            <h3>What if I face a problem?</h3>
+            <p>
+                Fill out the support form above and
+                submit your issue for review.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="mx-cta-section">
+    <div class="mx-cta">
+
+        <h2>Still need assistance?</h2>
+
+        <p>
+            We're here to make your moving experience
+            smooth and stress-free.
+        </p>
+
+        <a href="contact.html">Contact MOVEXA →</a>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="mx-footer">
+
+    <div class="mx-footer-grid">
+
+        <div>
+            <div class="mx-footer-brand">
+                MOVE<span>XA</span>
+            </div>
+
+            <p>Move Smarter. Move Better.</p>
+
+            <p>
+                Your trusted moving and relocation
+                service platform.
+            </p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="help.html">Help Center</a>
+        </div>
+
+        <div>
+            <h3>Our Services</h3>
+            <a href="booking.html">Book a Move</a>
+            <a href="bookings.html">My Bookings</a>
+            <a href="login.html">Login</a>
+        </div>
+
+    </div>
+
+    <div class="mx-footer-bottom">
+        © 2026 MOVEXA. All Rights Reserved.
+        Move Smarter. Move Better.
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="../js/script.js"></script>
+
+<script>
+document.getElementById("supportForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("supportName").value.trim();
+    const email = document.getElementById("supportEmail").value.trim();
+    const issue = document.getElementById("supportIssue").value;
+    const message = document.getElementById("supportMessage").value.trim();
+
+    if (!name || !email || !issue || !message) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    alert(
+        "Support request submitted successfully!\n\n" +
+        "Name: " + name +
+        "\nEmail: " + email +
+        "\nIssue: " + issue
+    );
+
+    this.reset();
+});
+</script>
+
+</body>
+</html>

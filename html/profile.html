@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>MOVEXA | Profile</title>
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a class="logo" href="index.html">
+
+            <img src="../images/logo.png"
+                alt="MOVEXA Logo">
+
+            MOVEXA
+
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="booking.html">Book Move</a>
+
+            <a href="bookings.html">My Bookings</a>
+
+            <a href="help.html">Help</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page">
+
+    <div class="container">
+
+        <div class="page-title center">
+
+            <h1>
+                My Profile
+            </h1>
+
+            <p>
+                Update your account information.
+            </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+            <div
+                id="profileAlert"
+                class="alert">
+            </div>
+
+
+            <form id="profileForm">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        readonly>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        name="phone"
+                        pattern="[0-9]{10}"
+                        required>
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary"
+                    type="submit">
+
+                    Update Profile
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

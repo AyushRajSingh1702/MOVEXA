@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>MOVEXA | Dashboard</title>
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a class="logo" href="index.html">
+
+            <img src="../images/logo.png"
+                alt="MOVEXA Logo">
+
+            MOVEXA
+
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="booking.html">Book Move</a>
+
+            <a href="bookings.html">My Bookings</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a href="help.html">Help</a>
+
+            <button
+                class="btn btn-primary"
+                onclick="logout()">
+
+                Logout
+
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page">
+
+    <div class="container">
+
+        <div class="page-title">
+
+            <h1>
+                Hello,
+                <span id="userName">User</span> 👋
+            </h1>
+
+            <p>
+                Manage your moving journey
+                from one place.
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+            <div class="stat">
+
+                <small>
+                    Total Bookings
+                </small>
+
+                <strong id="totalBookings">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat">
+
+                <small>
+                    Service
+                </small>
+
+                <strong>
+                    Moving
+                </strong>
+
+            </div>
+
+
+            <div class="stat">
+
+                <small>
+                    Support
+                </small>
+
+                <strong>
+                    24/7
+                </strong>
+
+            </div>
+
+
+            <div class="stat">
+
+                <small>
+                    Status
+                </small>
+
+                <strong>
+                    Live
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                Quick Actions
+            </h2>
+
+
+            <div
+                style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px">
+
+                <a
+                    class="btn btn-primary"
+                    href="booking.html">
+
+                    New Booking
+
+                </a>
+
+
+                <a
+                    class="btn btn-secondary"
+                    href="bookings.html">
+
+                    My Bookings
+
+                </a>
+
+
+                <a
+                    class="btn btn-secondary"
+                    href="profile.html">
+
+                    My Profile
+
+                </a>
+
+
+                <a
+                    class="btn btn-secondary"
+                    href="help.html">
+
+                    Need Help?
+
+                </a>
+
+            </div>
+
+
+            <p
+                id="lastBooking"
+                class="muted"
+                style="margin-top:20px">
+
+                No booking created yet.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

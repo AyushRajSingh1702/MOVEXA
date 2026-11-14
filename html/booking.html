@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>MOVEXA | Book a Move</title>
+
+    <link rel="stylesheet"
+        href="../css/style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a class="logo" href="index.html">
+
+            <img src="../images/logo.png"
+                alt="MOVEXA Logo">
+
+            MOVEXA
+
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+            <a href="bookings.html">My Bookings</a>
+
+            <a href="profile.html">Profile</a>
+
+            <a href="help.html">Help</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<section class="page">
+
+    <div class="container">
+
+        <div class="page-title center">
+
+            <h1>
+                Book Your Move
+            </h1>
+
+            <p>
+                Enter your moving details below.
+            </p>
+
+        </div>
+
+
+        <div class="form-card">
+
+            <div
+                id="bookingAlert"
+                class="alert">
+            </div>
+
+
+            <form id="bookingForm">
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Pickup Location
+                        </label>
+
+                        <input
+                            type="text"
+                            name="from"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Delivery Location
+                        </label>
+
+                        <input
+                            type="text"
+                            name="to"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Moving Date
+                        </label>
+
+                        <input
+                            type="date"
+                            name="moveDate"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Service
+                        </label>
+
+                        <select
+                            name="service"
+                            required>
+
+                            <option value="">
+                                Select Service
+                            </option>
+
+                            <option>
+                                Home Relocation
+                            </option>
+
+                            <option>
+                                Packing Services
+                            </option>
+
+                            <option>
+                                Office Moving
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone
+                        </label>
+
+                        <input
+                            type="tel"
+                            name="phone"
+                            pattern="[0-9]{10}"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Approx. Items
+                        </label>
+
+                        <input
+                            type="number"
+                            name="items"
+                            min="1"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <button
+                            class="btn btn-primary"
+                            type="submit">
+
+                            Create Booking
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

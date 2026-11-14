@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MOVEXA | Create Account</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="auth-page">
+
+    <header class="navbar">
+        <div class="container nav-container">
+
+            <a href="index.html" class="brand">
+                <div class="brand-mark"><span>→</span></div>
+                <div class="brand-text">
+                    <strong>MOVEXA</strong>
+                    <small>Moving Services</small>
+                </div>
+            </a>
+
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html" class="nav-login">Login</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main class="auth-main">
+
+        <div class="auth-layout">
+
+            <!-- LEFT BRAND PANEL -->
+
+            <section class="auth-showcase">
+
+                <span class="auth-eyebrow">WELCOME TO MOVEXA</span>
+
+                <h1>
+                    Your next move
+                    starts with
+                    <span>one account.</span>
+                </h1>
+
+                <p>
+                    Create your MOVEXA account and make your relocation
+                    experience simple, organized and stress-free.
+                </p>
+
+                <div class="auth-benefits">
+
+                    <div class="auth-benefit">
+                        <span class="benefit-check">✓</span>
+                        <div>
+                            <strong>Easy Booking</strong>
+                            <small>Schedule your move in minutes.</small>
+                        </div>
+                    </div>
+
+                    <div class="auth-benefit">
+                        <span class="benefit-check">✓</span>
+                        <div>
+                            <strong>Track Your Move</strong>
+                            <small>Stay updated about your booking.</small>
+                        </div>
+                    </div>
+
+                    <div class="auth-benefit">
+                        <span class="benefit-check">✓</span>
+                        <div>
+                            <strong>Personal Dashboard</strong>
+                            <small>Manage your bookings in one place.</small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="auth-showcase-bottom">
+                    MOVE SMARTER. MOVE BETTER.
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT REGISTRATION FORM -->
+
+            <section class="auth-form-section">
+
+                <div class="register-card">
+
+                    <div class="register-heading">
+
+                        <span class="register-tag">GET STARTED</span>
+
+                        <h2>Create Account</h2>
+
+                        <p>
+                            Fill in your details to join MOVEXA.
+                        </p>
+
+                    </div>
+
+
+                    <div id="registerAlert" class="alert"></div>
+
+
+                    <form id="registerForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group full">
+                                <label for="regName">Full Name</label>
+                                <input
+                                    type="text"
+                                    id="regName"
+                                    name="name"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group full">
+                                <label for="regEmail">Email Address</label>
+                                <input
+                                    type="email"
+                                    id="regEmail"
+                                    name="email"
+                                    placeholder="example@email.com"
+                                    autocomplete="email"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group full">
+                                <label for="regPhone">Phone Number</label>
+                                <input
+                                    type="tel"
+                                    id="regPhone"
+                                    name="phone"
+                                    placeholder="Enter your phone number"
+                                    autocomplete="tel"
+                                    pattern="[0-9]{10}"
+                                    maxlength="10"
+                                    required
+                                >
+                                <small class="field-hint">
+                                    Enter your 10-digit mobile number.
+                                </small>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="regPassword">Password</label>
+                                <input
+                                    type="password"
+                                    id="regPassword"
+                                    name="password"
+                                    placeholder="Create password"
+                                    autocomplete="new-password"
+                                    minlength="6"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="regConfirmPassword">
+                                    Confirm Password
+                                </label>
+
+                                <input
+                                    type="password"
+                                    id="regConfirmPassword"
+                                    name="confirmPassword"
+                                    placeholder="Repeat password"
+                                    autocomplete="new-password"
+                                    minlength="6"
+                                    required
+                                >
+                            </div>
+
+                        </div>
+
+
+                        <div class="register-note">
+                            By creating an account, you can manage
+                            your MOVEXA bookings online.
+                        </div>
+
+
+                        <button type="submit"
+                                class="btn btn-primary register-submit">
+
+                            Create My Account
+                            <span>→</span>
+
+                        </button>
+
+                    </form>
+
+
+                    <div class="register-login">
+                        Already have an account?
+                        <a href="login.html">Login here</a>
+                    </div>
+
+                    <div class="register-security">
+                        <span>🔒</span>
+                        Your information stays on this device.
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <footer class="auth-footer">
+        © 2026 MOVEXA. CA2 Academic Project.
+    </footer>
+
+
+    <script src="../js/script.js"></script>
+
+</body>
+</html>
