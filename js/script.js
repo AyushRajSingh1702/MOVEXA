@@ -652,6 +652,9 @@ function deleteBooking(id) {
 
 /* ===================== 12. PROFILE ===================== */
 
+
+/* PROFILE */
+
 function initProfile() {
 
     const form = document.getElementById("profileForm");
@@ -660,71 +663,181 @@ function initProfile() {
 
     if (!requireLogin()) return;
 
-
     const user = currentUser();
-
     const users = getData(KEY_USERS);
 
+    const userIndex = users.findIndex(item =>
+        item.id === (user.id || user.email) ||
+        item.email === user.email
+    );
 
-    const fullUser =
-        users.find(item => item.id === user.id) || user;
+    const fullUser = userIndex >= 0 ? users[userIndex] : user;
 
+    const nameInput = form.elements["name"];
+    const emailInput = form.elements["email"];
+    const phoneInput = form.elements["phone"];
 
-    form.elements["name"].value = fullUser.name || "";
+    const imageInput = document.getElementById("profileImage");
+    const preview = document.getElementById("profilePreview");
+    const displayName = document.getElementById("profileDisplayName");
 
-    form.elements["email"].value = fullUser.email || "";
+    let selectedImage = fullUser.profileImage || "";
 
-    form.elements["phone"].value = fullUser.phone || "";
+    const defaultAvatar =
+        "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
+                <rect width="300" height="300" fill="#B9F12F"/>
+                <circle cx="150" cy="110" r="55" fill="#0B3048"/>
+                <path d="M45 290 Q45 185 150 185 Q255 185 255 290" fill="#0B3048"/>
+            </svg>
+        `);
 
+    function updatePreview() {
+        if (preview) {
+            preview.src = selectedImage || defaultAvatar;
+        }
+    }
 
+    nameInput.value = fullUser.name || "";
+    emailInput.value = fullUser.email || "";
+    phoneInput.value = fullUser.phone || "";
+
+    if (displayName) {
+        displayName.textContent = fullUser.name || "Your Profile";
+    }
+
+    updatePreview();
+
+    // UPDATE NAME PREVIEW
+    nameInput.addEventListener("input", function () {
+        if (displayName) {
+            displayName.textContent = nameInput.value || "Your Profile";
+        }
+    });
+
+    // PROFILE IMAGE SELECTION
+    if (imageInput) {
+
+        imageInput.addEventListener("change", function () {
+
+            const file = imageInput.files[0];
+
+            if (!file) return;
+
+            if (!file.type.startsWith("image/")) {
+                showAlert("profileAlert", "Please select a valid image.");
+                imageInput.value = "";
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) {
+                showAlert("profileAlert", "Image must be smaller than 5 MB.");
+                imageInput.value = "";
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+
+                const image = new Image();
+
+                image.onload = function () {
+
+                    const canvas = document.createElement("canvas");
+
+                    const maxSize = 500;
+
+                    let width = image.width;
+                    let height = image.height;
+
+                    if (width > height && width > maxSize) {
+                        height = Math.round(height * maxSize / width);
+                        width = maxSize;
+                    } else if (height > maxSize) {
+                        width = Math.round(width * maxSize / height);
+                        height = maxSize;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const context = canvas.getContext("2d");
+
+                    context.drawImage(image, 0, 0, width, height);
+
+                    selectedImage = canvas.toDataURL("image/jpeg", 0.78);
+
+                    updatePreview();
+
+                };
+
+                image.onerror = function () {
+                    showAlert("profileAlert", "Unable to load this image.");
+                };
+
+                image.src = event.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // SAVE PROFILE
     form.addEventListener("submit", function (event) {
 
         event.preventDefault();
 
-        const formData = new FormData(form);
+        const newName = nameInput.value.trim();
+        const phone = phoneInput.value.trim();
 
-        const newName = formData.get("name").trim();
-
-        const phone = formData.get("phone").trim();
-
-
-        const users = getData(KEY_USERS);
-
-
-        const index =
-            users.findIndex(item => item.id === user.id);
-
-
-        if (index >= 0) {
-
-            users[index].name = newName;
-
-            users[index].phone = phone;
-
-            saveData(KEY_USERS, users);
-
+        if (!newName) {
+            showAlert("profileAlert", "Please enter your name.");
+            return;
         }
 
+        const latestUsers = getData(KEY_USERS);
 
-        setCurrentUser({
-
-            ...user,
-
-            name: newName,
-
-            phone: phone
-
-        });
-
-
-        showAlert(
-            "profileAlert",
-            "Profile updated successfully."
+        const index = latestUsers.findIndex(item =>
+            item.id === (user.id || user.email) ||
+            item.email === user.email
         );
 
+        const updatedUser = {
+            ...fullUser,
+            name: newName,
+            phone: phone,
+            profileImage: selectedImage
+        };
+
+        if (index >= 0) {
+            latestUsers[index] = {
+                ...latestUsers[index],
+                name: newName,
+                phone: phone,
+                profileImage: selectedImage
+            };
+
+            saveData(KEY_USERS, latestUsers);
+        }
+
+        setCurrentUser({
+            ...user,
+            name: newName,
+            phone: phone,
+            profileImage: selectedImage
+        });
+
+        if (displayName) {
+            displayName.textContent = newName;
+        }
+
+        showAlert("profileAlert", "Profile updated successfully!");
     });
 
 }
+
 
 
 /* ===================== 13. DASHBOARD ===================== */

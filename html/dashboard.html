@@ -1,202 +1,367 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>MOVEXA | Dashboard</title>
 
-    <link rel="stylesheet"
-        href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
+    <style>
+        :root {
+            --midnight: #0B3048;
+            --teal: #164B63;
+            --lime: #B9F12F;
+            --pearl: #F2F0E9;
+            --text: #173344;
+            --muted: #71808A;
+        }
+
+        body {
+            background: var(--pearl);
+            color: var(--text);
+        }
+
+        .dashboard-page {
+            padding: 55px 0 75px;
+            min-height: 85vh;
+        }
+
+        .welcome-section {
+            background: var(--midnight);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .welcome-section h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-section p {
+            color: #d5e1e7;
+        }
+
+        .welcome-tag {
+            background: var(--lime);
+            color: var(--midnight);
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .dashboard-stat {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #e3e7e6;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .dashboard-stat:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px #0b304815;
+        }
+
+        .dashboard-stat small {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .dashboard-stat strong {
+            display: block;
+            color: var(--midnight);
+            font-size: 27px;
+            margin-top: 12px;
+        }
+
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            background: white;
+            padding: 27px;
+            border-radius: 18px;
+            border: 1px solid #e3e7e6;
+        }
+
+        .dashboard-card h2 {
+            color: var(--midnight);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .dashboard-card .description {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .action-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .action-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            border: 1px solid #e3e7e6;
+            border-radius: 12px;
+            color: var(--midnight);
+            text-decoration: none;
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        .action-link:hover {
+            border-color: var(--lime);
+            background: #f8fce9;
+            transform: translateY(-2px);
+        }
+
+        .action-icon {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            background: var(--pearl);
+            border-radius: 10px;
+            font-size: 19px;
+        }
+
+        .last-booking {
+            background: #f7f9f8;
+            padding: 16px;
+            border-radius: 12px;
+            border-left: 4px solid var(--lime);
+            color: var(--text);
+            margin-top: 18px;
+            font-size: 14px;
+        }
+
+        .support-box {
+            background: var(--midnight);
+            color: white;
+            padding: 24px;
+            border-radius: 16px;
+            margin-top: 18px;
+        }
+
+        .support-box p {
+            color: #d5e1e7;
+            font-size: 14px;
+            margin: 10px 0 18px;
+        }
+
+        .support-box a {
+            display: inline-block;
+            background: var(--lime);
+            color: var(--midnight);
+            text-decoration: none;
+            padding: 11px 17px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .dashboard-page {
+                padding: 30px 0 50px;
+            }
+
+            .welcome-section {
+                padding: 25px;
+            }
+
+            .welcome-section h1 {
+                font-size: 24px;
+            }
+
+            .dashboard-grid {
+                gap: 12px;
+            }
+
+            .dashboard-stat {
+                padding: 18px;
+            }
+
+            .dashboard-stat strong {
+                font-size: 23px;
+            }
+
+            .action-list {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-card {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header class="navbar">
-
     <div class="container nav-inner">
 
         <a class="logo" href="index.html">
-
-            <img src="../images/logo.png"
-                alt="MOVEXA Logo">
-
+            <img src="../images/logo.png" alt="MOVEXA Logo">
             MOVEXA
-
         </a>
 
         <nav class="nav-links">
-
             <a href="index.html">Home</a>
-
             <a href="dashboard.html">Dashboard</a>
-
             <a href="booking.html">Book Move</a>
-
             <a href="bookings.html">My Bookings</a>
-
             <a href="profile.html">Profile</a>
-
             <a href="help.html">Help</a>
 
-            <button
-                class="btn btn-primary"
-                onclick="logout()">
-
+            <button class="btn btn-primary" onclick="logout()">
                 Logout
-
             </button>
-
         </nav>
 
     </div>
-
 </header>
 
-
-<section class="page">
-
+<section class="dashboard-page">
     <div class="container">
 
-        <div class="page-title">
+        <div class="welcome-section">
+            <div>
+                <h1>Hello, <span id="userName">User</span> 👋</h1>
+                <p>Your moving journey, all in one place.</p>
+            </div>
 
-            <h1>
-                Hello,
-                <span id="userName">User</span> 👋
-            </h1>
-
-            <p>
-                Manage your moving journey
-                from one place.
-            </p>
-
+            <span class="welcome-tag">MOVEXA CUSTOMER</span>
         </div>
-
 
         <div class="dashboard-grid">
 
-            <div class="stat">
-
-                <small>
-                    Total Bookings
-                </small>
-
-                <strong id="totalBookings">
-                    0
-                </strong>
-
+            <div class="dashboard-stat">
+                <small>Total Bookings</small>
+                <strong id="totalBookings">0</strong>
             </div>
 
-
-            <div class="stat">
-
-                <small>
-                    Service
-                </small>
-
-                <strong>
-                    Moving
-                </strong>
-
+            <div class="dashboard-stat">
+                <small>Our Service</small>
+                <strong>Moving</strong>
             </div>
 
-
-            <div class="stat">
-
-                <small>
-                    Support
-                </small>
-
-                <strong>
-                    24/7
-                </strong>
-
+            <div class="dashboard-stat">
+                <small>Customer Support</small>
+                <strong>24/7</strong>
             </div>
 
-
-            <div class="stat">
-
-                <small>
-                    Status
-                </small>
-
-                <strong>
-                    Live
-                </strong>
-
+            <div class="dashboard-stat">
+                <small>Booking Platform</small>
+                <strong>Online</strong>
             </div>
 
         </div>
 
+        <div class="dashboard-content">
 
-        <div class="card">
+            <div class="dashboard-card">
 
-            <h2>
-                Quick Actions
-            </h2>
+                <h2>Quick Actions</h2>
+                <p class="description">
+                    Everything you need to manage your move.
+                </p>
 
+                <div class="action-list">
 
-            <div
-                style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px">
+                    <a href="booking.html" class="action-link">
+                        <span class="action-icon">📦</span>
+                        <span>New Booking</span>
+                    </a>
 
-                <a
-                    class="btn btn-primary"
-                    href="booking.html">
+                    <a href="bookings.html" class="action-link">
+                        <span class="action-icon">🚚</span>
+                        <span>My Bookings</span>
+                    </a>
 
-                    New Booking
+                    <a href="profile.html" class="action-link">
+                        <span class="action-icon">👤</span>
+                        <span>My Profile</span>
+                    </a>
 
-                </a>
+                    <a href="help.html" class="action-link">
+                        <span class="action-icon">💬</span>
+                        <span>Get Help</span>
+                    </a>
 
+                </div>
 
-                <a
-                    class="btn btn-secondary"
-                    href="bookings.html">
-
-                    My Bookings
-
-                </a>
-
-
-                <a
-                    class="btn btn-secondary"
-                    href="profile.html">
-
-                    My Profile
-
-                </a>
-
-
-                <a
-                    class="btn btn-secondary"
-                    href="help.html">
-
-                    Need Help?
-
-                </a>
+                <div class="last-booking">
+                    <strong>Recent Activity</strong>
+                    <p id="lastBooking" style="margin-top:8px;">
+                        No booking created yet.
+                    </p>
+                </div>
 
             </div>
 
+            <div class="dashboard-card">
 
-            <p
-                id="lastBooking"
-                class="muted"
-                style="margin-top:20px">
+                <h2>Need Assistance?</h2>
+                <p class="description">
+                    We're here to make your moving experience easier.
+                </p>
 
-                No booking created yet.
+                <div class="support-box">
+                    <h3>We're here for you! 💚</h3>
+                    <p>
+                        Have questions about your booking or moving service?
+                        Contact our support team.
+                    </p>
 
-            </p>
+                    <a href="help.html">Contact Support →</a>
+                </div>
+
+            </div>
 
         </div>
 
     </div>
-
 </section>
-
 
 <script src="../js/script.js"></script>
 

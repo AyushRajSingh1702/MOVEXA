@@ -1,142 +1,379 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <title>MOVEXA | My Profile</title>
 
-    <title>MOVEXA | Profile</title>
+    <link rel="stylesheet" href="../css/style.css">
 
-    <link rel="stylesheet"
-        href="../css/style.css">
+    <style>
+        :root {
+            --midnight: #0B3048;
+            --teal: #164B63;
+            --lime: #B9F12F;
+            --pearl: #F2F0E9;
+            --text: #173344;
+            --muted: #71808A;
+        }
 
+        body {
+            background: var(--pearl);
+            color: var(--text);
+        }
+
+        .profile-page {
+            padding: 55px 15px 75px;
+            min-height: 85vh;
+        }
+
+        .profile-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-heading h1 {
+            color: var(--midnight);
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .profile-heading p {
+            color: var(--muted);
+        }
+
+        .profile-card {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(11, 48, 72, 0.08);
+            border: 1px solid #e4e9e8;
+        }
+
+        .profile-banner {
+            height: 145px;
+            background: linear-gradient(120deg, var(--midnight), var(--teal));
+            position: relative;
+        }
+
+        .profile-main {
+            padding: 0 45px 40px;
+        }
+
+        .profile-photo-area {
+            display: flex;
+            align-items: end;
+            gap: 22px;
+            margin-top: -65px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .profile-photo-wrapper {
+            width: 135px;
+            height: 135px;
+            border: 6px solid white;
+            border-radius: 50%;
+            background: var(--lime);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .profile-photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-edit {
+            position: absolute;
+            bottom: 2px;
+            right: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: var(--lime);
+            color: var(--midnight);
+            display: grid;
+            place-items: center;
+            border: 3px solid white;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .photo-info {
+            padding-bottom: 12px;
+        }
+
+        .photo-info h2 {
+            color: var(--midnight);
+            font-size: 21px;
+            margin-bottom: 5px;
+        }
+
+        .photo-info p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .profile-divider {
+            border: none;
+            border-top: 1px solid #e9eeee;
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            color: var(--midnight);
+            font-size: 19px;
+            margin-bottom: 22px;
+        }
+
+        .profile-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .profile-field {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .profile-field.full {
+            grid-column: 1 / -1;
+        }
+
+        .profile-field label {
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .profile-field input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid #dce4e5;
+            border-radius: 10px;
+            background: #fafcfb;
+            color: var(--text);
+            font-size: 15px;
+            outline: none;
+            transition: .2s;
+        }
+
+        .profile-field input:focus {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(22, 75, 99, .09);
+        }
+
+        .profile-field input[readonly] {
+            background: #f0f3f2;
+            color: #71808A;
+            cursor: not-allowed;
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 28px;
+        }
+
+        .save-profile-btn {
+            background: var(--lime);
+            color: var(--midnight);
+            border: none;
+            padding: 14px 27px;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .save-profile-btn:hover {
+            background: #a9df20;
+            transform: translateY(-2px);
+        }
+
+        .photo-hint {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 9px;
+        }
+
+        @media (max-width: 600px) {
+            .profile-page {
+                padding: 35px 12px 50px;
+            }
+
+            .profile-main {
+                padding: 0 22px 28px;
+            }
+
+            .profile-photo-area {
+                gap: 14px;
+            }
+
+            .profile-photo-wrapper {
+                width: 110px;
+                height: 110px;
+            }
+
+            .profile-heading h1 {
+                font-size: 27px;
+            }
+
+            .profile-fields {
+                grid-template-columns: 1fr;
+                gap: 17px;
+            }
+
+            .profile-field.full {
+                grid-column: auto;
+            }
+
+            .profile-actions button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header class="navbar">
-
     <div class="container nav-inner">
 
         <a class="logo" href="index.html">
-
-            <img src="../images/logo.png"
-                alt="MOVEXA Logo">
-
+            <img src="../images/logo.png" alt="MOVEXA Logo">
             MOVEXA
-
         </a>
 
         <nav class="nav-links">
-
             <a href="index.html">Home</a>
-
             <a href="dashboard.html">Dashboard</a>
-
             <a href="booking.html">Book Move</a>
-
             <a href="bookings.html">My Bookings</a>
-
+            <a href="profile.html">Profile</a>
             <a href="help.html">Help</a>
 
+            <button class="btn btn-primary" onclick="logout()">
+                Logout
+            </button>
         </nav>
 
     </div>
-
 </header>
 
+<section class="profile-page">
 
-<section class="page">
+    <div class="profile-heading">
+        <h1>My Profile</h1>
+        <p>Manage your personal information and profile photo.</p>
+    </div>
 
-    <div class="container">
+    <div class="profile-card">
 
-        <div class="page-title center">
+        <div class="profile-banner"></div>
 
-            <h1>
-                My Profile
-            </h1>
+        <div class="profile-main">
 
-            <p>
-                Update your account information.
-            </p>
+            <div class="profile-photo-area">
 
-        </div>
+                <div class="profile-photo-wrapper">
 
+                    <img
+                        id="profilePreview"
+                        src="https://placehold.co/300x300/B9F12F/0B3048?text=MK"
+                        alt="Profile Photo"
+                    >
 
-        <div class="form-card">
+                    <label for="profileImage" class="photo-edit" title="Change photo">
+                        ✎
+                    </label>
 
-            <div
-                id="profileAlert"
-                class="alert">
+                </div>
+
+                <div class="photo-info">
+                    <h2 id="profileDisplayName">Your Profile</h2>
+                    <p> MOVEXA Customer Account </p>
+                </div>
+
             </div>
 
+            <input
+                type="file"
+                id="profileImage"
+                accept="image/png, image/jpeg, image/webp"
+                hidden
+            >
+
+            <p class="photo-hint">
+                Select a JPG, PNG or WEBP image. Maximum original file size: 5 MB.
+            </p>
+
+            <hr class="profile-divider">
+
+            <h2 class="section-title">Personal Information</h2>
 
             <form id="profileForm">
 
+                <div class="profile-fields">
 
-                <div class="form-group">
+                    <div class="profile-field">
+                        <label for="profileName">Full Name</label>
+                        <input
+                            type="text"
+                            id="profileName"
+                            name="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
 
-                    <label>
-                        Name
-                    </label>
+                    <div class="profile-field">
+                        <label for="profileEmail">Email Address</label>
+                        <input
+                            type="email"
+                            id="profileEmail"
+                            name="email"
+                            readonly
+                        >
+                    </div>
 
-                    <input
-                        type="text"
-                        name="name"
-                        required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input
-                        type="email"
-                        name="email"
-                        readonly>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Phone
-                    </label>
-
-                    <input
-                        type="tel"
-                        name="phone"
-                        pattern="[0-9]{10}"
-                        required>
+                    <div class="profile-field full">
+                        <label for="profilePhone">Phone Number</label>
+                        <input
+                            type="tel"
+                            id="profilePhone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            maxlength="15"
+                        >
+                    </div>
 
                 </div>
 
-
-                <button
-                    class="btn btn-primary"
-                    type="submit">
-
-                    Update Profile
-
-                </button>
-
+                <div class="profile-actions">
+                    <button type="submit" class="save-profile-btn">
+                        Save Changes
+                    </button>
+                </div>
 
             </form>
 
         </div>
-
     </div>
 
 </section>
-
 
 <script src="../js/script.js"></script>
 
